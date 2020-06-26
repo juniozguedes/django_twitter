@@ -14,3 +14,7 @@ class ListCreateTweet(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = Tweet.objects.all()
         return queryset
+
+class RetrieveDestroyTweet(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Tweet.objects.all()
+    serializer_class = TweetSerializer
