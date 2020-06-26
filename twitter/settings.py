@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'rest_framework.authtoken',
     'rest_framework',
     'tweets',
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',  
+        'users.authentication.ExpiringTokenAuthentication',  # custom authentication class
     ],
 }
 
@@ -126,3 +127,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TOKEN_EXPIRED_AFTER_SECONDS = 86400

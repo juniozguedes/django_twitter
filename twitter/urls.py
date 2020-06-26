@@ -1,10 +1,9 @@
 from django.contrib import admin
-from rest_framework.authtoken.views import obtain_auth_token
 from django.urls import path, include
-
+from users.views import signin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  
-    path('tweets/', include('tweets.urls'))
+    path('api/v1/signin', signin),  
+    path('tweets/', include('tweets.urls')),
 ]
