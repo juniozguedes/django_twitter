@@ -4,27 +4,15 @@ from .models import Tweet
 from .serializers import TweetSerializer
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
-from django.http import JsonResponse
-from rest_framework.parsers import JSONParser
-
-
-
-
-
 
 class ListCreateTweet(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,) 
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            print(JSONParser().parse(self.request.user))
-            serializer_class = TweetSerializer    
-        elif self.request.method == 'POST':
-            serializer_class = TweetSerializer
-            
-        return serializer_class
+    serializer_class = TweetSerializer
+    def perform_create(self, serializer_class):
+        serializer_class.save(author=self.request.user)
+ 
     def get_queryset(self):
-        queryset = Tweet.objects.all()
+        queryset = Tweet.objects.filter(author=self.request.user)
         return queryset
 
 class RetrieveDestroyTweet(generics.RetrieveUpdateDestroyAPIView):
