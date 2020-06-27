@@ -4,6 +4,7 @@ from users.views import signin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/signin', signin),  
+    path('twitter/signin', signin),
     path('api/v1/', include('tweets.urls')),
+    path('user/', include('users.urls')),
 ]
