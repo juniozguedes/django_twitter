@@ -5,5 +5,5 @@ from users.views import signin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/signin', signin),  
-    path('tweets/', include('tweets.urls')),
+    path('api/v1/', include('tweets.urls')),
 ]
