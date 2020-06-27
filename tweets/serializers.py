@@ -5,4 +5,4 @@ from django.contrib.auth.models import User
 class TweetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tweet
-        fields = ['id','tweet','created']
+        fields = ['id','content','created']
