@@ -16,13 +16,13 @@ class ListCreateTweet(generics.ListCreateAPIView):
         return queryset
 
 class RetrieveDestroyTweet(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = Tweet.objects.all()
     serializer_class = TweetSerializer
 
 class ShowTweets(generics.ListAPIView):    
     serializer_class = TweetSerializer
     lookup_url_kwarg = "username"
-
     def get_queryset(self):
         username = self.kwargs.get(self.lookup_url_kwarg)
         user = User.objects.filter(username=username).first()
