@@ -34,7 +34,5 @@ class TimelineTweets(generics.ListAPIView):
     serializer_class = TweetSerializer
     def get_queryset(self):
         followed_people = Follow.objects.filter(follower=self.request.user).values('following')
-        follower_tweets = Tweet.objects.filter(user_id__in=followed_people)
-        my_tweets = Tweet.objects.filter(user_id=self.request.user)
-        combined_list = follower_tweets | my_tweets
-        return combined_list
+        combined_list = Tweet.objects.filter(user_id__in=followed_people) | Tweet.objects.filter(user_id=self.request.user)
+        return combined_list.order_by('-created')
