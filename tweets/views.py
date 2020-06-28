@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Tweet
+from users.models import Follow
 from .serializers import TweetSerializer
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
@@ -28,3 +29,12 @@ class ShowTweets(generics.ListAPIView):
         user = User.objects.filter(username=username).first()
         tweets = Tweet.objects.filter(user_id=user.id)
         return tweets
+
+class TimelineTweets(generics.ListAPIView):    
+    serializer_class = TweetSerializer
+    def get_queryset(self):
+        followed_people = Follow.objects.filter(follower=self.request.user).values('following')
+        follower_tweets = Tweet.objects.filter(user_id__in=followed_people)
+        my_tweets = Tweet.objects.filter(user_id=self.request.user)
+        combined_list = follower_tweets | my_tweets
+        return combined_list
