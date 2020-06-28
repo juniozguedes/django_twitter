@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Tweet
-from .serializers import TweetSerializer
+from .models import Favorites
+from .serializers import TweetSerializer, FavoriteSerializer
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
@@ -28,3 +29,13 @@ class ShowTweets(generics.ListAPIView):
         user = User.objects.filter(username=username).first()
         tweets = Tweet.objects.filter(user_id=user.id)
         return tweets
+
+
+class ListTweetFavorites(generics.ListAPIView):
+    serializer_class = FavoriteSerializer
+   
+    def get_queryset(self):
+        queryset = Favorites.objects.filter(tweet_id=self.kwargs['pk'])
+        
+        
+        return queryset

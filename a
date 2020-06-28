@@ -1,0 +1,1 @@
+SELECT * FROM 'tweets_tweet' where user_id_id in (select following_id from 'users_follow' where follower_id=8)
