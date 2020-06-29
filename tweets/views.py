@@ -16,10 +16,12 @@ class ListCreateTweet(generics.ListCreateAPIView):
         queryset = Tweet.objects.filter(user_id=self.request.user)
         return queryset
 
+
 class RetrieveDestroyTweet(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Tweet.objects.all()
     serializer_class = TweetSerializer
+
 
 class ShowTweets(generics.ListAPIView):    
     serializer_class = TweetSerializer
@@ -33,9 +35,6 @@ class ShowTweets(generics.ListAPIView):
 
 class ListTweetFavorites(generics.ListAPIView):
     serializer_class = FavoriteSerializer
-   
     def get_queryset(self):
         queryset = Favorites.objects.filter(tweet_id=self.kwargs['pk'])
-        
-        
         return queryset
