@@ -13,21 +13,14 @@ class TweetSerializer(serializers.ModelSerializer):
 
 
 class FavoriteSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+    user = UserSerializer(many=True)
     tweet = TweetSerializer()
-    favorite_count = serializers.IntegerField(source='favorite_set.count', 
-    read_only=True)
-
-    
+    favorite_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Favorites
         fields = ['tweet', 'user', 'favorite_count']
 
-class MajorFavoriteSerializer(serializers.ModelSerializer):
-    tweet = TweetSerializer()
-    users = UserSerializer()
-    favorite_count = serializers.CharField(source='asbaba')
-    class Meta:
-        model=Favorites
-        fields = ['tweet','users', 'favorite_count']
+    def get_favorite_count(self, obj):
+        return obj.user.count()
+
