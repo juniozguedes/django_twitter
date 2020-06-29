@@ -6,9 +6,7 @@ class Tweet(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
 
-
-
 class Favorites(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    tweet = models.ForeignKey(Tweet, on_delete=models.CASCADE)
+    user = models.ManyToManyField(User,related_name='user_favorites')
+    tweet = models.OneToOneField(Tweet, related_name='favorites', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
