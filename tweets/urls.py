@@ -6,4 +6,5 @@ urlpatterns = [
     path('<int:pk>', views.RetrieveDestroyTweet.as_view(), name='retrieve_destroy_tweet'),
     path('<str:username>/tweets', views.ShowTweets.as_view(), name='tweets'),
     path('timeline', views.TimelineTweets.as_view(), name='timeline'),
+    path('<int:pk>/favorites', views.ListTweetFavorites.as_view(), name='favorites')
 ]

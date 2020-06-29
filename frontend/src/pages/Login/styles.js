@@ -31,6 +31,7 @@ export const Content = styled.div`
     width: 550px;
     height: 48px;
     margin: 15px 0 20px 0;
+    transition: background 0.2s;
     &:hover{
       background: #1b95e0;
     }
