@@ -1,23 +1,22 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .models import Tweet
-from users.models import Follow
-from .serializers import TweetSerializer
-from .models import Favorites
-from .serializers import TweetSerializer, FavoriteSerializer
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
+from .models import Tweet
+from .models import Favorites
+from .serializers import TweetSerializer, FavoriteSerializer
+from users.models import Follow
 
 class ListCreateTweet(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,) 
     serializer_class = TweetSerializer
-    def perform_create(self, serializer_class):
-        serializer_class.save(user_id=self.request.user)
  
     def get_queryset(self):
         queryset = Tweet.objects.filter(user_id=self.request.user)
         return queryset
 
+    def perform_create(self, serializer, **kwargs):
+        serializer.save(user=self.request.user)
 
 class RetrieveDestroyTweet(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
