@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
 
     setData();
     history.push('/login');
-  }, []);
+  }, [history]);
 
   return (
     <AuthContext.Provider value={{ userData: data, signIn, signOut }}>
