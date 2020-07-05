@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
+import { useHistory } from 'react-router-dom';
+
 import { GrTwitter } from 'react-icons/gr';
 import api from '../../services/api';
-
 import { Content, Input } from './styles';
 
 function Login() {
@@ -10,7 +11,7 @@ function Login() {
     username: '',
     password: '',
   });
-
+  const history = useHistory();
   function handleUserData(e) {
     const { name, value } = e.target;
     setUserData({
@@ -20,8 +21,12 @@ function Login() {
   }
 
   async function handleButtonSubmit() {
-    const response = await api.post('signin', userData);
-    console.log(response.data);
+    try {
+      await api.post('signin', userData);
+      history.push('/');
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
