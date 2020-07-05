@@ -7,6 +7,15 @@ from .models import Favorites
 from .serializers import TweetSerializer, FavoriteSerializer
 from users.models import Follow
 
+from django.http import HttpResponse
+from rest_framework.response import Response
+from django.core import serializers
+
+import json
+
+from django.http import JsonResponse
+
+
 class ListCreateTweet(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,) 
     serializer_class = TweetSerializer
@@ -42,6 +51,39 @@ class TimelineTweets(generics.ListAPIView):
 
 class ListTweetFavorites(generics.ListAPIView):
     serializer_class = FavoriteSerializer
+<<<<<<< Updated upstream
     def get_queryset(self):
         queryset = Favorites.objects.filter(tweet_id=self.kwargs['pk'])
         return queryset
+=======
+   
+    
+
+    
+   
+    
+    def get_queryset(self):
+        #serializer_class = FavoriteSerializer
+
+        favorites = Favorites.objects.filter(tweet_id=self.kwargs['pk'])
+        #queryset = {
+        #   "tweet" : 'Favorites.objects.filter(tweet_id=self.kwargs['pk'])[0].tweet', 
+        #   "users": [],
+        #   "favorite_count": favorites.count()
+       #    }
+
+        
+        
+        #for favorite in Favorites.objects.filter(tweet_id=9):
+        #    queryset['users'].append(favorite.user)
+        test = Favorites.objects.all()
+        qs_json = serializers.serialize('json', test)
+        print(qs_json)
+        return HttpResponse(qs_json, content_type='application/json')
+     
+        
+        
+     
+        
+   
+>>>>>>> Stashed changes

@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Tweet, Favorites
 
+
 from users.models import User
 from users.serializers import UserSerializer 
 
@@ -24,7 +25,7 @@ class FavoriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Favorites
-        fields = ['tweet', 'user', 'favorite_count']
+        fields = ['user', 'tweet']
 
     def get_favorite_count(self, obj):
         return obj.user.count()

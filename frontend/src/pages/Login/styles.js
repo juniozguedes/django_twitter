@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Content = styled.div`
-
   margin-top: 20px;
   margin-right: auto;
   margin-left: auto;
@@ -20,8 +19,6 @@ export const Content = styled.div`
     font-weight: bold;
   }
 
-  }
-
   button {
     background-color: #1da1f2;
     color: #fff;
@@ -31,9 +28,15 @@ export const Content = styled.div`
     width: 550px;
     height: 48px;
     margin: 15px 0 20px 0;
-    transition: background 0.2s;
-    &:hover{
+    transition: background 0.25s;
+    font-weight: bolder;
+
+    &:hover:not(:disabled) {
       background: #1b95e0;
+    }
+    &:disabled {
+      cursor: inherit;
+      opacity: 0.5;
     }
   }
 
@@ -44,7 +47,7 @@ export const Content = styled.div`
       text-decoration: none;
       margin-top: 20px;
       margin-right: 10px;
-      &:hover{
+      &:hover {
         color: #1da1f2;
       }
     }
@@ -70,7 +73,7 @@ export const Input = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  label {
+  span {
     font-size: 14px;
     padding: 5px 10px 0;
   }
