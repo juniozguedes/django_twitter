@@ -10,7 +10,7 @@ export default createGlobalStyle`
   }
   body {
     height: 100%;
-    background-color: #141f27;
+    background-color: rgb(21, 32, 43);
   }
   html, body, #root{
     height:100%

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 import { useHistory } from 'react-router-dom';
-
 import { GrTwitter } from 'react-icons/gr';
-import api from '../../services/api';
+
+import { useAuth } from '../../hooks/Auth';
 import { Content, Input } from './styles';
 
 function Login() {
@@ -11,6 +11,9 @@ function Login() {
     username: '',
     password: '',
   });
+  const [hasError, setHasError] = useState(false);
+  const { signIn } = useAuth();
+
   const history = useHistory();
   function handleUserData(e) {
     const { name, value } = e.target;
@@ -22,17 +25,27 @@ function Login() {
 
   async function handleButtonSubmit() {
     try {
-      await api.post('signin', userData);
+      const { username, password } = userData;
+
+      await signIn({
+        username,
+        password,
+      });
       history.push('/');
     } catch (err) {
-      console.log(err);
+      setHasError(true);
     }
   }
-
   return (
     <Content>
       <GrTwitter size={36} color="#fff" />
       <p>Entrar no Twitter</p>
+      {hasError && (
+        <span>
+          O nome de usuário e a senha fornecidos não correspondem às informações
+          em nossos registros. Verifique-as e tente novamente.
+        </span>
+      )}
       <Input>
         <span>Celular, email ou nome de usuário</span>
         <input

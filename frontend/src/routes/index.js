@@ -1,13 +1,13 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-
+import { Switch } from 'react-router-dom';
+import Route from './Route';
 import Timeline from '../pages/Timeline';
 import Login from '../pages/Login';
 
 function Routes() {
   return (
     <Switch>
-      <Route path="/" exact component={Timeline} />
+      <Route path="/" exact isPrivate component={Timeline} />
       <Route path="/login" component={Login} />
     </Switch>
   );

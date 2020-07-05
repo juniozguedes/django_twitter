@@ -1,11 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { useAuth } from '../../hooks/Auth';
 
 function Timeline() {
+  const { userData, signOut } = useAuth();
+  const { user } = userData;
+
   return (
     <>
-      <h1>Timeline</h1>
-      <Link to="/login">Go to login</Link>
+      <h1>{user.username} timeline</h1>
+      <button type="button" onClick={signOut}>
+        Logout
+      </button>
     </>
   );
 }

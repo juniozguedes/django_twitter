@@ -11,12 +11,16 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  > span {
+    color: #e0245e;
+    font-size: 15px;
+    font-weight: 400;
+  }
   p {
     font-size: 23px;
     margin: 30px 10px;
     color: #fff;
-    font-weight: bold;
+    font-weight: bolder;
   }
 
   button {
