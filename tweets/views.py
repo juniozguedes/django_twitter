@@ -51,39 +51,6 @@ class TimelineTweets(generics.ListAPIView):
 
 class ListTweetFavorites(generics.ListAPIView):
     serializer_class = FavoriteSerializer
-<<<<<<< Updated upstream
     def get_queryset(self):
         queryset = Favorites.objects.filter(tweet_id=self.kwargs['pk'])
         return queryset
-=======
-   
-    
-
-    
-   
-    
-    def get_queryset(self):
-        #serializer_class = FavoriteSerializer
-
-        favorites = Favorites.objects.filter(tweet_id=self.kwargs['pk'])
-        #queryset = {
-        #   "tweet" : 'Favorites.objects.filter(tweet_id=self.kwargs['pk'])[0].tweet', 
-        #   "users": [],
-        #   "favorite_count": favorites.count()
-       #    }
-
-        
-        
-        #for favorite in Favorites.objects.filter(tweet_id=9):
-        #    queryset['users'].append(favorite.user)
-        test = Favorites.objects.all()
-        qs_json = serializers.serialize('json', test)
-        print(qs_json)
-        return HttpResponse(qs_json, content_type='application/json')
-     
-        
-        
-     
-        
-   
->>>>>>> Stashed changes
