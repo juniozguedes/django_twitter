@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
-from rest_framework.status import (HTTP_400_BAD_REQUEST,HTTP_404_NOT_FOUND,HTTP_200_OK,)
+from rest_framework.status import (HTTP_400_BAD_REQUEST,HTTP_404_NOT_FOUND,HTTP_200_OK, HTTP_401_UNAUTHORIZED)
 from rest_framework.response import Response
 
 from .serializers import UserSerializer, UserSigninSerializer, FollowSerializer
@@ -19,7 +19,7 @@ def signin(request):
         return Response(signin_serializer.errors, status = HTTP_400_BAD_REQUEST)
     user = authenticate(username = signin_serializer.data['username'], password = signin_serializer.data['password'])
     if not user:
-        return Response({'detail': 'Invalid Credentials'}, status=HTTP_404_NOT_FOUND)
+        return Response({'detail': 'Invalid Credentials'}, status=HTTP_401_UNAUTHORIZED)
 
     #TOKEN STUFF
     token, _ = Token.objects.get_or_create(user = user)
