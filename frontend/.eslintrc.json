@@ -15,7 +15,7 @@
     "jsx-a11y/control-has-associated-label":"off",
     "react/prop-types":"off",
 
-
+    "consistent-return":"off",
     "eslint/no-param-reassing":"off",
     "react/jsx-props-no-spreading":"off",
     "no-return-assign":"off",
