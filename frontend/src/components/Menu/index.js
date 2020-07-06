@@ -8,7 +8,7 @@ import { Container } from './styles'
 function Menu(){
   return(
     <Container>
-      <GrTwitter size={36} color="#fff" />
+      <span><GrTwitter size={30} color="#fff" /></span>
       <div>Pagina Inicial</div>
       <div>Explorar</div>
       <div>Notificações</div>

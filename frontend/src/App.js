@@ -9,10 +9,10 @@ import Routes from './routes';
 function App() {
   return (
     <BrowserRouter>
+      <GlobalStyles />
       <AppProvider>
         <Routes />
       </AppProvider>
-      <GlobalStyles />
     </BrowserRouter>
   );
 }
