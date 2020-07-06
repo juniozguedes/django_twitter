@@ -49,8 +49,18 @@ class TimelineTweets(generics.ListAPIView):
         combined_list = Tweet.objects.filter(user_id__in=followed_people) | Tweet.objects.filter(user_id=self.request.user)
         return combined_list.order_by('-created')
 
-class ListTweetFavorites(generics.ListAPIView):
+class ListCreateTweetFavorites(generics.ListCreateAPIView):
+    permission_classes = (IsAuthenticated,) 
     serializer_class = FavoriteSerializer
+    lookup_url_kwarg = "pk"
+
     def get_queryset(self):
         queryset = Favorites.objects.filter(tweet_id=self.kwargs['pk'])
         return queryset
+
+
+    def perform_create(self, serializer, **kwargs):
+        tweet = self.kwargs.get(self.lookup_url_kwarg)
+        serializer.save(user=self.request.user, tweet= tweet)
+        
+    

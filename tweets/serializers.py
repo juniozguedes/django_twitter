@@ -25,8 +25,7 @@ class FavoriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Favorites
-        fields = ['user', 'tweet']
+        fields = ['tweet', 'user', 'favorite_count']
 
     def get_favorite_count(self, obj):
         return obj.user.count()
-

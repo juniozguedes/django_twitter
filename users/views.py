@@ -4,6 +4,9 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.status import (HTTP_400_BAD_REQUEST,HTTP_404_NOT_FOUND,HTTP_200_OK, HTTP_401_UNAUTHORIZED)
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+
+from .models import User
 
 from .serializers import UserSerializer, UserSigninSerializer, FollowSerializer
 from .authentication import token_expire_handler, expires_in
@@ -38,3 +41,9 @@ class Follow(generics.CreateAPIView):
     serializer_class = FollowSerializer
     def perform_create(self, serializer_class):
         serializer_class.save(follower=self.request.user)
+
+
+class UserCreateAPIView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    
