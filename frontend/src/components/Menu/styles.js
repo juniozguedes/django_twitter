@@ -5,6 +5,7 @@ export const Container = styled.div`
   color: #fff;
   font-weight: bold;
   margin-right: 23px;
+  margin-left: 77px;
 
   span {
     cursor: pointer;
@@ -23,8 +24,8 @@ export const Container = styled.div`
     width: max-content;
     display: flex;
     cursor: pointer;
-    padding: 6px;
-    margin-bottom: 18px;
+    padding: 10px;
+    margin-bottom: 16px;
     margin-top: 4px;
     transition-duration: 0.2s;
 
@@ -33,11 +34,17 @@ export const Container = styled.div`
       margin-left: 15px;
       margin-right: 15px;
     }
+    svg {
+      transition: fill 0.2s;
+    }
   }
   div:hover {
     color: rgba(29, 161, 242, 1);
     border-radius: 50px;
     background: rgba(29, 161, 242, 0.1);
+    svg {
+      fill: rgba(29, 161, 242, 1);
+    }
   }
   button {
     background: rgb(29, 161, 242);

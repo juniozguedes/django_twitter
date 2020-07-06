@@ -1,7 +1,8 @@
 import React from 'react';
-import { IoIosAdd, IoIosPartlySunny } from 'react-icons/io';
 
 import { Container, Home, WhatsHappening, TweetContent } from './styles';
+
+import { AddImage, AddEmoji, AddGif, AddPoll, AddSchedule } from '../../assets';
 
 function Timeline() {
   return (
@@ -20,12 +21,11 @@ function Timeline() {
           </div>
           <div>
             <div>
-              <IoIosAdd size={22} />
-              <IoIosPartlySunny size={22} />
-              <IoIosAdd size={22} />
-              <IoIosPartlySunny size={22} />
-              <IoIosAdd size={22} />
-              <IoIosPartlySunny size={22} />
+              <AddImage size={22} color="#fff" />
+              <AddGif size={22} color="#fff" />
+              <AddPoll size={22} color="#fff" />
+              <AddEmoji size={22} color="#fff" />
+              <AddSchedule size={22} color="#fff" />
             </div>
             <div>
               <button type="button">Tweet</button>

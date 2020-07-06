@@ -1,7 +1,16 @@
 import React from 'react';
 
 import { GrTwitter } from 'react-icons/gr';
-import { IoMdHome } from 'react-icons/io';
+import {
+  Bookmarks,
+  Explore,
+  Home,
+  Lists,
+  Profile,
+  Notifications,
+  More,
+  Messages,
+} from '../../assets';
 
 import { Container } from './styles';
 
@@ -12,35 +21,35 @@ function Menu() {
         <GrTwitter size={30} color="#fff" />
       </span>
       <div>
-        <IoMdHome size={26} />
+        <Home color="#fff" size={26} />
         <p>Pagina Inicial</p>
       </div>
       <div>
-        <IoMdHome size={26} />
+        <Explore color="#fff" size={26} />
         <p>Explorar</p>
       </div>
       <div>
-        <IoMdHome size={26} />
+        <Notifications color="#fff" size={26} />
         <p>Notificações</p>
       </div>
       <div>
-        <IoMdHome size={26} />
+        <Messages color="#fff" size={26} />
         <p>Mensagens</p>
       </div>
       <div>
-        <IoMdHome size={26} />
+        <Bookmarks color="#fff" size={26} />
         <p>Itens Salvos</p>
       </div>
       <div>
-        <IoMdHome size={26} />
+        <Lists color="#fff" size={26} />
         <p>Listas</p>
       </div>
       <div>
-        <IoMdHome size={26} />
+        <Profile color="#fff" size={26} />
         <p>Perfil</p>
       </div>
       <div>
-        <IoMdHome size={26} />
+        <More color="#fff" size={26} />
         <p>Mais</p>
       </div>
       <button type="button">Tweetar</button>

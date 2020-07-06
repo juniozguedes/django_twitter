@@ -14,7 +14,8 @@
   "rules": {
     "jsx-a11y/control-has-associated-label":"off",
     "react/prop-types":"off",
-    "consistent-return":"error",
+
+
     "eslint/no-param-reassing":"off",
     "react/jsx-props-no-spreading":"off",
     "no-return-assign":"off",

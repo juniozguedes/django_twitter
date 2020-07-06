@@ -77,6 +77,9 @@ export const TweetContent = styled.div`
 
     > div {
       align-self: center;
+      svg {
+        margin-right: 16px;
+      }
     }
     button {
       background: rgb(29, 161, 242);
