@@ -10,7 +10,6 @@ function Timeline() {
 
   return (
     <>
-      <h1>timeline</h1>
       <Menu/>
       <button type="button">
         Logout

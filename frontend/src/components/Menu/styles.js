@@ -4,8 +4,7 @@ export const Container = styled.div`
   font-size: 19px;
   color: #fff;
   font-weight: bold;
-  width: 275px;
-  margin-left: 60px;
+  margin-left: 70px;
 
   span{
     cursor: pointer;
@@ -15,17 +14,26 @@ export const Container = styled.div`
     width: 49px;
     height: 49px;
     border-radius: 50%;
-
-
+    margin-bottom: 10px;
   }
   span:hover{
     background: rgba(29, 161, 242, 0.1);
   }
   div{
-    max-width: 100%;
+    width: max-content;
+    display: flex;
     cursor: pointer;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 6px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    transition-duration: 0.2s;
+
+    p{
+      margin-top: 6px;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+
   }
   div:hover{
     color: rgba(29,161,242,1.00);
@@ -39,9 +47,13 @@ export const Container = styled.div`
     font-weight: bold;
     color: inherit;
     width: 212px;
-    height: 46px;
+    height: 44px;
     border: 0;
     border-radius: 20px;
+    margin-top: 9px;
+  }
+  button:hover{
+    background: #1b95e0;
 
   }
 `
