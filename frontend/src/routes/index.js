@@ -7,7 +7,7 @@ import Login from '../pages/Login';
 function Routes() {
   return (
     <Switch>
-      <Route path="/" exact isPrivate component={Timeline} />
+      <Route path="/" exact component={Timeline} />
       <Route path="/login" component={Login} />
     </Switch>
   );

@@ -1,15 +1,18 @@
 import React from 'react';
 
-import { useAuth } from '../../hooks/Auth';
+import Menu from '../../components/Menu'
 
+/* import { useAuth } from '../../hooks/Auth';
+ */
 function Timeline() {
-  const { userData, signOut } = useAuth();
-  const { user } = userData;
+/*   const { userData, signOut } = useAuth();
+  const { user } = userData; */
 
   return (
     <>
-      <h1>{user.username} timeline</h1>
-      <button type="button" onClick={signOut}>
+      <h1>timeline</h1>
+      <Menu/>
+      <button type="button">
         Logout
       </button>
     </>
