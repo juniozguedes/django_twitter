@@ -1,12 +1,12 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Container = styled.div`
-  font-size: 19px;
+  font-size: 18px;
   color: #fff;
   font-weight: bold;
-  margin-left: 70px;
+  margin-right: 23px;
 
-  span{
+  span {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -16,31 +16,30 @@ export const Container = styled.div`
     border-radius: 50%;
     margin-bottom: 10px;
   }
-  span:hover{
+  span:hover {
     background: rgba(29, 161, 242, 0.1);
   }
-  div{
+  div {
     width: max-content;
     display: flex;
     cursor: pointer;
     padding: 6px;
-    margin-bottom: 4px;
+    margin-bottom: 18px;
     margin-top: 4px;
     transition-duration: 0.2s;
 
-    p{
+    p {
       margin-top: 6px;
       margin-left: 15px;
       margin-right: 15px;
     }
-
   }
-  div:hover{
-    color: rgba(29,161,242,1.00);
+  div:hover {
+    color: rgba(29, 161, 242, 1);
     border-radius: 50px;
     background: rgba(29, 161, 242, 0.1);
   }
-  button{
+  button {
     background: rgb(29, 161, 242);
     font-size: 15px;
     font-family: inherit;
@@ -52,8 +51,7 @@ export const Container = styled.div`
     border-radius: 20px;
     margin-top: 9px;
   }
-  button:hover{
+  button:hover {
     background: #1b95e0;
-
   }
-`
+`;
