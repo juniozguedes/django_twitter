@@ -1,22 +1,16 @@
 import React from 'react';
 
-import Menu from '../../components/Menu'
+import Menu from '../../components/Menu';
+import Timeline from '../../components/Timeline';
+import { Container } from './styles';
 
-/* import { useAuth } from '../../hooks/Auth';
- */
-function Timeline() {
-/*   const { userData, signOut } = useAuth();
-  const { user } = userData; */
-
+function Home() {
   return (
-    <>
-      <h1>timeline</h1>
-      <Menu/>
-      <button type="button">
-        Logout
-      </button>
-    </>
+    <Container>
+      <Menu />
+      <Timeline />
+    </Container>
   );
 }
 
-export default Timeline;
+export default Home;

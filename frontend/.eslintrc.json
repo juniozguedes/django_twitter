@@ -12,6 +12,7 @@
     "node": true
   },
   "rules": {
+    "jsx-a11y/control-has-associated-label":"off",
     "react/prop-types":"off",
     "consistent-return":"error",
     "eslint/no-param-reassing":"off",
