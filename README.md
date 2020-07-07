@@ -1,4 +1,4 @@
-# Twitter CLone
+# Twitter Clone
 ## Configurando ambiente ##
 
 #### Clonar repositório do projeto ####
@@ -204,6 +204,7 @@ ex.: 'Token 0a46fa5cf570f194a692007d3e642bceb31b7985'
 ## 🤖 Technologies
 
 -  [Django](https://www.djangoproject.com/)
+-  [ReactJS](https://www.reactjs.org)
 
 ### Usefull links
 
