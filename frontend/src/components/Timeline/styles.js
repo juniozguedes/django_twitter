@@ -29,11 +29,11 @@ export const WhatsHappening = styled.div`
   max-height: 716px;
   border-bottom: 9px solid #253341;
   padding: 10px 15px;
-  display: flex;
 
   div:first-child {
     margin-right: 9px;
     padding-top: 5px;
+    display: flex;
     img {
       width: 46px;
       height: 46px;
@@ -51,18 +51,19 @@ export const TweetContent = styled.div`
     display: flex;
     max-width: 500px;
     height: auto;
+    position: relative;
+
     span {
       max-height: 516px;
-
       width: 100%;
       overflow: auto;
       padding: 10px 0;
       line-height: 20px;
       font-size: 16px;
       color: #fff;
-
       font-weight: normal;
     }
+
     span[contentEditable]:empty::before {
       content: "What's happening?";
       font-size: 16px;
@@ -70,27 +71,85 @@ export const TweetContent = styled.div`
       cursor: text;
     }
   }
-  > div:nth-child(2) {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+`;
 
-    > div {
-      align-self: center;
-      svg {
-        margin-right: 16px;
-      }
+export const HighlightContent = styled.div`
+  bottom: 0;
+  margin: 0;
+  padding: 10px 0;
+  left: 0;
+  line-height: 20px;
+  color: transparent;
+  max-height: 516px;
+  position: absolute;
+  font-weight: normal;
+  font-size: 16px;
+  top: 6px;
+  white-space: pre-wrap;
+  width: 100%;
+  word-wrap: break-word;
+  z-index: -1;
+  font-weight: normal;
+  font-size: 16px;
+  overflow: auto;
+
+  mark {
+    background: rgb(224, 36, 94);
+    max-height: 516px;
+    padding: 0;
+    color: transparent;
+  }
+  &::-webkit-scrollbar {
+    display: ${(props) => (props.characterLimit ? 'inherit' : 'none')};
+  }
+`;
+
+export const TweetOptions = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  > div {
+    align-self: center;
+    margin-left: 55px;
+    svg {
+      margin-right: 16px;
     }
-    button {
-      background: rgb(29, 161, 242);
-      font-size: 14px;
-      font-family: inherit;
-      font-weight: bold;
-      color: inherit;
-      width: 70px;
-      height: 37px;
-      border: 0;
-      border-radius: 20px;
+  }
+
+  div:nth-child(2) {
+    display: flex;
+    > span {
+      font-size: 13px;
+      font-weight: 100;
+      color: #e0245e;
+      display: flex;
+      align-items: center;
     }
+    span + div {
+      border-right: 1px solid #6b7d8c;
+      margin: 0 5px 0 10px;
+    }
+    svg {
+      margin: 0;
+    }
+    div:nth-last-child(2) {
+      border: 1px solid rgb(29, 161, 242);
+      border-radius: 50%;
+      padding: 0 7px;
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+    }
+  }
+  button {
+    background: rgb(29, 161, 242);
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: bold;
+    color: inherit;
+    width: 70px;
+    height: 37px;
+    border: 0;
+    border-radius: 20px;
   }
 `;
