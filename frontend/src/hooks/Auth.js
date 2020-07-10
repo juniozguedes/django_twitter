@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
   });
   const history = useHistory();
   const signIn = useCallback(async ({ username, password }) => {
-    const response = await api.post('signin', {
+    const response = await api.post('twitter/signin', {
       username,
       password,
     });
