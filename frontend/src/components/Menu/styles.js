@@ -6,6 +6,11 @@ export const Container = styled.div`
   font-weight: bold;
   margin-right: 23px;
   margin-left: 77px;
+  section {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
 
   span {
     cursor: pointer;
