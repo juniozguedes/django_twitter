@@ -9,10 +9,7 @@ from django.contrib.auth.models import User
 from users.serializers import UserSerializer
     
 class TweetSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(
-        read_only=True,
-        default=serializers.CurrentUserDefault()
-    )
+    user = UserSerializer()
     class Meta:
         model = Tweet
         fields = ('__all__')
