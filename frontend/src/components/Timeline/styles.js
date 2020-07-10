@@ -57,6 +57,7 @@ export const TweetContent = styled.div`
       max-height: 516px;
       width: 100%;
       overflow: auto;
+      overflow-x: hidden;
       padding: 10px 0;
       line-height: 20px;
       font-size: 16px;
@@ -151,5 +152,14 @@ export const TweetOptions = styled.div`
     height: 37px;
     border: 0;
     border-radius: 20px;
+    transition: 0.2s;
+
+    &:hover:not(:disabled) {
+      background: #1b95e0;
+    }
+    &:disabled {
+      opacity: 0.5;
+      cursor: unset;
+    }
   }
 `;

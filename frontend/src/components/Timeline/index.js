@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { ScrollSync, ScrollSyncPane } from 'react-scroll-sync';
+
+import { useAuth } from '../../hooks/Auth';
+
+import api from '../../services/api';
 
 import {
   Container,
@@ -20,14 +24,47 @@ import {
 } from '../../assets';
 
 function Timeline() {
+  const tweetInputRef = useRef(null);
+  const { userData } = useAuth();
   const [characterCount, setCharacterCount] = useState(0);
   const [tweetContent, setTweetContent] = useState('');
 
   const maxLength = 240;
-  const remainingLength = maxLength - characterCount;
 
-  const allowedValue = tweetContent.slice(0, maxLength);
-  const refusedValuePart = tweetContent.slice(maxLength);
+  const remainingLength = useMemo(() => maxLength - characterCount, [
+    characterCount,
+  ]);
+
+  const characterCountPastMaxLength = useMemo(
+    () => -characterCount + maxLength,
+    [characterCount]
+  );
+
+  const allowedValue = useMemo(() => tweetContent.slice(0, maxLength), [
+    tweetContent,
+  ]);
+  const refusedValuePart = useMemo(() => tweetContent.slice(maxLength), [
+    tweetContent,
+  ]);
+
+  async function sendTweet() {
+    try {
+      await api.post(
+        'api/v1/',
+        {
+          content: allowedValue,
+        },
+        {
+          headers: { Authorization: `Token ${userData.token}` },
+        }
+      );
+      tweetInputRef.current.textContent = '';
+      setTweetContent('');
+      setCharacterCount(0);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <Container>
@@ -47,6 +84,7 @@ function Timeline() {
                 <>
                   <ScrollSyncPane>
                     <span
+                      ref={tweetInputRef}
                       contentEditable
                       onInput={(e) => {
                         setTweetContent(e.currentTarget.textContent);
@@ -82,7 +120,7 @@ function Timeline() {
           <div>
             {characterCount > maxLength ? (
               <>
-                <span> {-characterCount + 240} </span>
+                <span> {characterCountPastMaxLength} </span>
                 <div />
               </>
             ) : (
@@ -92,7 +130,9 @@ function Timeline() {
             <div>
               <AddMoreTweets size={19} color="rgb(29,161,242)" />
             </div>
-            <button type="button">Tweet</button>
+            <button disabled={!tweetContent} type="button" onClick={sendTweet}>
+              Tweet
+            </button>
           </div>
         </TweetOptions>
       </WhatsHappening>
