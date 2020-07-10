@@ -2,7 +2,7 @@ import React, { useState, useMemo, useRef } from 'react';
 import { ScrollSync, ScrollSyncPane } from 'react-scroll-sync';
 
 import { useAuth } from '../../hooks/Auth';
-
+import Tweet from '../Tweet';
 import api from '../../services/api';
 
 import {
@@ -111,31 +111,68 @@ function Timeline() {
         </div>
         <TweetOptions>
           <div>
-            <AddImage size={22} color="rgb(29,161,242)" />
-            <AddGif size={22} color="rgb(29,161,242)" />
-            <AddPoll size={22} color="rgb(29,161,242)" />
-            <AddEmoji size={22} color="rgb(29,161,242)" />
-            <AddSchedule size={22} color="rgb(29,161,242)" />
+            <span>
+              <AddImage size={22} color="rgb(29,161,242)" />
+            </span>
+            <span>
+              <AddGif size={22} color="rgb(29,161,242)" />
+            </span>
+            <span>
+              <AddPoll size={22} color="rgb(29,161,242)" />
+            </span>
+            <span>
+              <AddEmoji size={22} color="rgb(29,161,242)" />
+            </span>
+            <span>
+              <AddSchedule size={22} color="rgb(29,161,242)" />
+            </span>
           </div>
           <div>
             {characterCount > maxLength ? (
               <>
-                <span> {characterCountPastMaxLength} </span>
+                <i> {characterCountPastMaxLength} </i>
                 <div />
               </>
             ) : (
               ''
             )}
+            {tweetContent ? (
+              <div>
+                <AddMoreTweets size={19} color="rgb(29,161,242)" />
+              </div>
+            ) : (
+              ''
+            )}
 
-            <div>
-              <AddMoreTweets size={19} color="rgb(29,161,242)" />
-            </div>
             <button disabled={!tweetContent} type="button" onClick={sendTweet}>
               Tweet
             </button>
           </div>
         </TweetOptions>
       </WhatsHappening>
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
+      <Tweet />
     </Container>
   );
 }

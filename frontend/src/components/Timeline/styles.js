@@ -6,13 +6,16 @@ export const Container = styled.div`
   max-width: 600px;
   border: 1px solid rgb(56, 68, 77);
   border-top: 0;
+  border-bottom: 0;
   color: #fff;
   font-size: 18px;
+  height: auto;
 `;
 
 export const Home = styled.div`
   position: sticky;
   top: 0;
+  z-index: 1;
   height: 50px;
   border-bottom: 1px solid rgb(56, 68, 77);
   width: 100%;
@@ -112,20 +115,31 @@ export const TweetOptions = styled.div`
   > div {
     align-self: center;
     margin-left: 55px;
-    svg {
-      margin-right: 16px;
+
+    span {
+      border-radius: 50%;
+      padding: 7px;
+      display: flex;
+      margin-right: 3px;
+      align-items: center;
+      cursor: pointer;
+      &:hover {
+        background: rgba(29, 161, 242, 0.1);
+      }
     }
   }
 
   div:nth-child(2) {
     display: flex;
-    > span {
+
+    i {
       font-size: 13px;
       font-weight: 100;
       color: #e0245e;
       display: flex;
       align-items: center;
     }
+
     span + div {
       border-right: 1px solid #6b7d8c;
       margin: 0 5px 0 10px;
@@ -140,6 +154,10 @@ export const TweetOptions = styled.div`
       display: flex;
       align-items: center;
       margin: 0 10px;
+
+      &:hover {
+        background: rgba(29, 161, 242, 0.1);
+      }
     }
   }
   button {
