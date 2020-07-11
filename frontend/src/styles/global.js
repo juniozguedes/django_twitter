@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
   *{
-    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-family: 'Segoe UI',-apple-system, 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
     outline: 0;
@@ -18,4 +18,8 @@ export default createGlobalStyle`
   button{
     cursor: pointer;
   }
+  a{
+        text-decoration:none;
+        color:rgba(29, 161, 242)
+      }
 `;

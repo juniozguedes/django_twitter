@@ -4,8 +4,8 @@ export const Container = styled.div`
   font-size: 18px;
   color: #fff;
   font-weight: bold;
-  margin-right: 23px;
-  margin-left: 77px;
+  margin: 0 23px 0 35px;
+
   section {
     position: sticky;
     top: 0;
@@ -31,13 +31,15 @@ export const Container = styled.div`
     cursor: pointer;
     padding: 10px;
     margin-bottom: 16px;
-    margin-top: 4px;
+
     transition-duration: 0.2s;
 
     p {
-      margin-top: 6px;
       margin-left: 15px;
       margin-right: 15px;
+      @media (max-width: 1270px) {
+        display: none;
+      }
     }
     svg {
       transition: fill 0.2s;
@@ -62,6 +64,24 @@ export const Container = styled.div`
     border: 0;
     border-radius: 20px;
     margin-top: 9px;
+    em {
+      font-style: normal;
+    }
+
+    svg {
+      display: none;
+    }
+    @media (max-width: 1270px) {
+      width: auto;
+      padding: 9px;
+      border-radius: 50%;
+      svg {
+        display: initial;
+      }
+      em {
+        display: none;
+      }
+    }
   }
   button:hover {
     background: #1b95e0;
